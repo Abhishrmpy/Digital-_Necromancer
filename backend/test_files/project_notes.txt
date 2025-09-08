@@ -1,0 +1,4 @@
+# My Project Notes 
+ 
+This is a test file for the Digital Necromancer API. 
+It contains sample code and notes for testing. 

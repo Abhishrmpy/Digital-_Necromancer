@@ -1,0 +1,42 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=MedievalSharp&display=swap');
+
+@layer base {
+  body {
+    font-family: 'Cinzel', serif;
+  }
+  
+  .font-magic {
+    font-family: 'MedievalSharp', cursive;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #8b5cf6, #ec4899);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #7c3aed, #db2777);
+}
+
+/* Custom select styles */
+select {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  color: white !important;
+  border: 1px solid rgba(255, 215, 0, 0.3) !important;
+}
+
+select option {
+  background-color: #1a202c !important;
+  color: white !important;
+}
