@@ -1,7 +1,9 @@
+// frontend/src/App.jsx
+// import Prism from './components/prism';
 import React, { useState } from 'react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
-import MagicalBackground from './components/MagicalBackground';
+import Prism from './components/prism';
 import MagicButton from './components/MagicButton';
 
 function App() {
@@ -44,7 +46,25 @@ function App() {
 
   return (
     <div className="min-h-screen text-white overflow-hidden relative">
-      <MagicalBackground />
+      {/* Prism Animation Background */}
+      <div className="fixed inset-0 z-0">
+        <Prism
+          animationType="rotate"
+          timeScale={0.4}
+          height={3.5}
+          baseWidth={5.5}
+          scale={3.8}
+          hueShift={0.3}
+          colorFrequency={1.2}
+          noise={0.4}
+          glow={1.3}
+          transparent={true}
+          suspendWhenOffscreen={false}
+        />
+        
+        {/* Dark overlay for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-purple-900/20 to-black/70" />
+      </div>
       
       <div className="relative z-10 container mx-auto px-4 py-12">
         {/* Hero Section */}
@@ -65,10 +85,14 @@ function App() {
           {/* Animated Orb */}
           <motion.div
             className="w-24 h-24 bg-gradient-to-br from-purple-500 to-emerald-400 rounded-full 
-                      mx-auto mb-8 shadow-2xl shadow-purple-500/50"
+                      mx-auto mb-8 shadow-2xl shadow-purple-500/50 border-2 border-white/20"
             animate={{
-              scale: [1, 1.1, 1],
-              rotate: [0, 5, 0, -5, 0]
+              scale: [1, 1.2, 1],
+              boxShadow: [
+                '0 0 20px rgba(168, 85, 247, 0.5)',
+                '0 0 40px rgba(168, 85, 247, 0.8)',
+                '0 0 20px rgba(168, 85, 247, 0.5)'
+              ]
             }}
             transition={{
               duration: 3,
@@ -82,7 +106,7 @@ function App() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 1 }}
-          className="max-w-4xl mx-auto bg-black/40 backdrop-blur-md rounded-2xl p-8 
+          className="max-w-4xl mx-auto bg-black/40 backdrop-blur-lg rounded-2xl p-8 
                     border border-white/20 shadow-2xl shadow-purple-900/30"
         >
           {/* Input Form */}
@@ -94,8 +118,9 @@ function App() {
               <select 
                 value={historicalFigure}
                 onChange={(e) => setHistoricalFigure(e.target.value)}
-                className="w-full p-4 bg-black/50 border border-yellow-500/30 rounded-xl text-white
-                         focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/50 transition-all"
+                className="w-full p-4 bg-black/60 border border-yellow-500/40 rounded-xl text-white
+                         focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/50 transition-all
+                         backdrop-blur-sm"
               >
                 {historicalFigures.map(figure => (
                   <option key={figure} value={figure} className="bg-gray-900 text-white">
@@ -114,9 +139,9 @@ function App() {
                 value={folderPath}
                 onChange={(e) => setFolderPath(e.target.value)}
                 placeholder="C:\path\to\ancient\knowledge"
-                className="w-full p-4 bg-black/50 border border-yellow-500/30 rounded-xl text-white
+                className="w-full p-4 bg-black/60 border border-yellow-500/40 rounded-xl text-white
                          placeholder-gray-400 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/50
-                         transition-all"
+                         transition-all backdrop-blur-sm"
               />
             </div>
           </div>
@@ -133,9 +158,9 @@ function App() {
             <motion.div 
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className={`mt-6 p-4 rounded-xl text-center ${
-                status.includes('failed') ? 'bg-red-500/20 border-red-500/50' : 
-                'bg-emerald-500/20 border-emerald-500/50'
+              className={`mt-6 p-4 rounded-xl text-center backdrop-blur-sm ${
+                status.includes('failed') ? 'bg-red-500/30 border-red-500/50' : 
+                'bg-emerald-500/30 border-emerald-500/50'
               } border`}
             >
               {status}
@@ -149,13 +174,13 @@ function App() {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="mt-12 bg-black/40 backdrop-blur-md rounded-2xl p-8 
+            className="mt-12 bg-black/50 backdrop-blur-lg rounded-2xl p-8 
                       border border-white/20 shadow-2xl shadow-purple-900/30"
           >
             <h2 className="text-3xl font-magic text-yellow-400 mb-6 text-center">
               📜 Wisdom from {historicalFigure}
             </h2>
-            <div className="whitespace-pre-wrap leading-relaxed text-gray-200 text-lg">
+            <div className="whitespace-pre-wrap leading-relaxed text-gray-200 text-lg backdrop-blur-sm">
               {analysis}
             </div>
           </motion.div>
