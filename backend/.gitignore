@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+
+# Environment variables
+.env
+.env.local
+.env.production
+
+# API Keys and secrets
+*.key
+*.pem
+*.cert
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Log files
+logs/
+*.log# Log files
+logs/
+*.log
