@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "axios": "^1.12.2",
+    "framer-motion": "^12.23.24",
+    "ogl": "^1.0.11"
+  }
+}
